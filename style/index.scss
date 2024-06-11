@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 70px 23px;
+    padding: 23px;
     border: 10px solid header-footer.$color_brBlock;
     border-radius: 5px;
     background-color: header-footer.$color_bgBlock-secondary;
@@ -57,7 +57,7 @@
         }
       }
 
-      button {
+      button, input {
         appearance: none;
         width: 100%;
         padding: 30px 35px 30px 35px;
@@ -65,6 +65,14 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
+      }
+
+      label {
+        display: none;
+      }
+
+      input {
+        width: calc(100% - 70px);
       }
     }
 
@@ -82,4 +90,9 @@
       }
     }
   }
+}
+
+.section--form {
+  flex-direction: column;
+  gap: 20px;
 }
