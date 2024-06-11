@@ -1,0 +1,102 @@
+$color_bgHeaFoot: #4B4975;
+$color_txtHeaFoot: #FEBE71;
+$color_txtHeaFoot-hover: #FFEFDB;
+$color_bgMain: #F5F5F5;
+
+$color_bgBlock-primary: #FEBE71;
+$color_bgBlock-secondary: #FFEFDB;
+$color_brBlock: #FFDCB0;
+
+$color_bgFeedback: #9593BF;
+$color_brFeedback: #19148A;
+
+$color_bgAdmin: #B4B2E2;
+$color_brAdmin: #4A4788;
+
+$color_bgAccordion: #8A87C0;
+$color_txtAccordion: #B3B1DB;
+
+$padding_based-full: 90px;
+$padding_based-phone: 30px;
+
+$width_based-full: calc(100% - $padding_based-full * 2);
+$padding_based-phone: calc(100% - $padding_based-phone * 2);
+
+
+@mixin flex-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin ul-base {
+  ul {
+    @include flex-base;
+    flex-direction: row;
+    gap: 66px;
+
+    li {
+      color: $color_txtHeaFoot;
+
+      :hover {
+        color: $color_txtHeaFoot-hover;
+      }
+    }
+  }
+}
+
+@mixin HeadFoot-base-full {
+  width: $width_based-full;
+  padding: 0 $padding_based-full;
+
+  background-color: $color_bgHeaFoot;
+
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 0 0 auto;
+}
+
+ul, li, h1, h2, h3, p, a {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include flex-base;
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  @include flex-base;
+  @include HeadFoot-base-full;
+  min-height: 70px;
+
+  &__nav {
+    @include ul-base;
+  }
+}
+
+.main {
+  @include flex-base;
+  flex: 1 0 auto;
+}
+
+.footer {
+  @include flex-base;
+  @include HeadFoot-base-full;
+  min-height: 170px;
+
+  &__nav {
+    @include ul-base;
+    ul {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use "header-footer";
+
+@mixin block-base {
+  padding: 30px;
+  border-radius: 5px;
+  background-color: header-footer.$color_bgBlock-primary;
+}
+
+.section {
+  @include header-footer.flex-base;
+  @include block-base;
+  flex-direction: row;
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 70px 23px;
+    border: 10px solid header-footer.$color_brBlock;
+    border-radius: 5px;
+    background-color: header-footer.$color_bgBlock-secondary;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    form {
+      @include header-footer.flex-base;
+      align-items: flex-start;
+      gap: 55px;
+
+      select {
+        position: relative;
+
+        appearance: none;
+        width: 100%;
+        padding: 30px 35px 30px 35px;
+        background-color: header-footer.$color_bgAccordion;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+
+        ::after {
+          content: "";
+          position: absolute;
+          pointer-events: none;
+          top: 50%;
+          right: 35px;
+          transform: translate(0, -50%);
+          width: 45px;
+          height: 45px;
+          background-color: #000000;
+          clip-path: polygon(8% 17%, 0% 25%, 50% 84%, 100% 25%, 92% 17%, 50% 65%);
+        }
+      }
+
+      button {
+        appearance: none;
+        width: 100%;
+        padding: 30px 35px 30px 35px;
+        background-color: header-footer.$color_bgAccordion;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+
+    .grope {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      div {
+        background-color: header-footer.$color_bgFeedback;
+        border: 2px solid header-footer.$color_brFeedback;
+        border-radius: 5px;
+        padding: 30px;
+        max-width: 430px;
+      }
+    }
+  }
+}
