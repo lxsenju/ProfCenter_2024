@@ -96,3 +96,30 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.orders {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  background-color: header-footer.$color_bgBlock-secondary;
+  padding: 20px;
+  border-radius: 5px;
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      width: 170px;
+      padding: 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: header-footer.$color_bgAdmin;
+
+      &:hover {
+        background-color: header-footer.$color_bgAdmin-hover;
+      }
+    }
+  }
+}

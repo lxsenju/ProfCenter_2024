@@ -165,4 +165,28 @@ body {
   gap: 20px;
 }
 
+.orders {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+  background-color: #FFEFDB;
+  padding: 20px;
+  border-radius: 5px;
+}
+.orders__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.orders__col button {
+  width: 170px;
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #B4B2E2;
+}
+.orders__col button:hover {
+  background-color: #4A4788;
+}
+
 /*# sourceMappingURL=index.css.map */
