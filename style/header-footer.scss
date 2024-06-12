@@ -60,6 +60,7 @@ ul, li, h1, h2, h3, p, a {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  text-decoration: none;
 }
 
 html, body {
@@ -76,7 +77,10 @@ body {
   @include flex-base;
   @include HeadFoot-base-full;
   min-height: 70px;
-
+  a {
+    color: $color_txtHeaFoot;
+    text-decoration: none;
+  }
   &__nav {
     @include ul-base;
   }
@@ -85,6 +89,8 @@ body {
 .main {
   @include flex-base;
   flex: 1 0 auto;
+  gap: 20px;
+  margin: 20px 0 20px 0;
 }
 
 .footer {
@@ -98,5 +104,17 @@ body {
       flex-direction: column;
       gap: 5px;
     }
+  }
+  &__nav-icon{
+    @include ul-base;
+    ul {
+      gap: 10px;
+    }
+  }
+  &__nav-left {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    padding: 0 0 0 40px;
   }
 }

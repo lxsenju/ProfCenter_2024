@@ -10,11 +10,15 @@
   @include header-footer.flex-base;
   @include block-base;
   flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+  width: 60%;
 
   &__left {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    gap: 30px;
     padding: 23px;
     border: 10px solid header-footer.$color_brBlock;
     border-radius: 5px;
@@ -25,18 +29,28 @@
       flex-direction: column;
       gap: 40px;
     }
+    li {
+      display: flex;
+      flex-direction: row;
+      font-size: 16pt;
+      gap: 10px;
+      img {
+        width: 30px;
+      }
+
+    }
 
     form {
       @include header-footer.flex-base;
-      align-items: flex-start;
-      gap: 55px;
+      gap: 25px;
+      justify-content: center;
 
       select {
         position: relative;
 
         appearance: none;
         width: 100%;
-        padding: 30px 35px 30px 35px;
+        padding: 25px 35px 25px 35px;
         background-color: header-footer.$color_bgAccordion;
         border: none;
         border-radius: 5px;
@@ -60,11 +74,15 @@
       button, input {
         appearance: none;
         width: 100%;
-        padding: 30px 35px 30px 35px;
+        padding: 20px 35px 20px 35px;
         background-color: header-footer.$color_bgAccordion;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+      }
+      button:hover {
+        background-color: header-footer.$color_bgAdmin-hover;
+        transition: 0.3s;
       }
 
       label {
@@ -75,28 +93,59 @@
         width: calc(100% - 70px);
       }
     }
-
+    .p-r {
+      text-indent: 20px;
+    }
     .grope {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-
+      gap: 10px;
       div {
         background-color: header-footer.$color_bgFeedback;
         border: 2px solid header-footer.$color_brFeedback;
         border-radius: 5px;
         padding: 30px;
-        max-width: 430px;
+        max-width: 350px;
+      }
+      .author {
+        display: flex;
+        justify-content: end;
+        gap: 5px;
+      }
+      .author-img {
+        width: 20px;
       }
     }
   }
+  &__right{
+    display: flex;
+    justify-content: center;
+    background-color: header-footer.$color_bgBlock-secondary;
+    border: 10px solid header-footer.$color_brBlock;
+    border-radius: 5px;
+    .cat-img{
+      width: 25rem;
+      height: 25rem;
+    }
+    .client-img {
+      width: 25rem;
+      height: 33rem;
+    }
+    .man-img {
+      width: 20rem;
+      height: 25rem;
+    }
+  }
 }
-
+::placeholder {
+  color: header-footer.$color_txtAccordion;
+}
 .section--form {
   flex-direction: column;
   gap: 20px;
+  width: 90%;
 }
-
 .orders {
   display: flex;
   gap: 70px;
@@ -119,7 +168,15 @@
 
       &:hover {
         background-color: header-footer.$color_bgAdmin-hover;
+        transition: 0.3s;
       }
     }
   }
+}
+
+ul, li, h1, h2, h3, p, a {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
 }
