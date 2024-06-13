@@ -2,13 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/index.css" type="text/css">
     <link rel="stylesheet" href="style/header-footer.css" type="text/css">
+    <script src="js/index.js" defer></script>
     <title>Админ</title>
 </head>
 <body>
 <header class="header">
+
+    <div class="hamburger">
+        <div class="hamburger_lines" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+
+    <nav class="popup" id="popup">
+        <ul class="header_nav-popup">
+            <li><a href="">О нас</a></li>
+            <li><a href="">Услуги</a></li>
+            <li><a href="">Оформить заказ</a></li>
+            <li><a href="">Отзывы</a></li>
+            <li><a href="">Авторизация</a></li>
+        </ul>
+    </nav>
+
     <img src="img/logo.png" alt="logo">
     <nav class="header__nav">
         <ul>

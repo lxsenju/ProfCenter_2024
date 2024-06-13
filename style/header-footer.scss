@@ -20,7 +20,7 @@ $padding_based-full: 90px;
 $padding_based-phone: 30px;
 
 $width_based-full: calc(100% - $padding_based-full * 2);
-$padding_based-phone: calc(100% - $padding_based-phone * 2);
+$width_based-phone: calc(100% - $padding_based-phone * 2);
 
 
 @mixin flex-base {
@@ -56,6 +56,11 @@ $padding_based-phone: calc(100% - $padding_based-phone * 2);
   flex: 0 0 auto;
 }
 
+@mixin HeadFoot-base-phone {
+  width: $width_based-phone;
+  padding: 0 $padding_based-phone;
+}
+
 ul, li, h1, h2, h3, p, a {
   margin: 0;
   padding: 0;
@@ -77,14 +82,42 @@ body {
   @include flex-base;
   @include HeadFoot-base-full;
   min-height: 70px;
+
   a {
     color: $color_txtHeaFoot;
     text-decoration: none;
   }
+
   &__nav {
     @include ul-base;
   }
 }
+
+//popup menu>>>
+
+.hamburger {
+  display: none;
+}
+
+.popup {
+  display: none;
+}
+
+.nav-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header_nav-popup {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+//popup menu<<<
 
 .main {
   @include flex-base;
@@ -100,21 +133,88 @@ body {
 
   &__nav {
     @include ul-base;
+
     ul {
       flex-direction: column;
       gap: 5px;
     }
   }
-  &__nav-icon{
+
+  &__nav-icon {
     @include ul-base;
+
     ul {
       gap: 10px;
     }
   }
+
   &__nav-left {
     display: flex;
     flex-direction: row;
     gap: 50px;
     padding: 0 0 0 40px;
+  }
+}
+
+@media (max-width: 412px) {
+  .header {
+    padding: 30px;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .hamburger {
+    position: relative;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+  }
+
+  .bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 7px auto;
+    background-color: $color_txtHeaFoot;
+    transition: 0.3s;
+  }
+
+  .popup {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 90px);
+    background-color: $color_bgHeaFoot;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+  }
+
+  .popup.open {
+    left: 0;
+    height: 100%;
+    top: 70px;
+    display: flex;
+    overflow: auto;
+  }
+
+  .hamburger_lines.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger_lines.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .hamburger_lines.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  .footer, .footer__nav-left {
+    flex-direction: column;
   }
 }
