@@ -5,10 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/index.css" type="text/css">
     <link rel="stylesheet" href="style/header-footer.css" type="text/css">
+    <script src="js/index.js" defer></script>
     <title>ProfCenter</title>
 </head>
 <body>
 <header class="header">
+    <div class="hamburger">
+        <div class="hamburger_lines" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+
+    <nav class="popup" id="popup">
+        <ul class="header_nav-popup">
+            <li><a href="">О нас</a></li>
+            <li><a href="">Услуги</a></li>
+            <li><a href="">Оформить заказ</a></li>
+            <li><a href="">Отзывы</a></li>
+            <li><a href="">Авторизация</a></li>
+        </ul>
+    </nav>
+
     <img src="img/logo.png" alt="logo">
     <nav class="header__nav">
         <ul>
@@ -38,12 +57,61 @@
     </section>
     <section class="section">
         <div class="section__left">
-            <h1>Услуги</h1>
-            <form>
-                <input type="text">
-                <input type="text">
-                <button type="submit">Оформить заказ</button>
-            </form>
+            <h1>Бухгалтерские услуги</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h1>Юридические услуги</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Контроль ведения учета</td>
+                    <td>5000</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="section__right">
             <img src="img/man.png" alt="man" class="man-img">
@@ -79,28 +147,28 @@
         <div class="section__left">
             <h1>ОТЗЫВЫ</h1>
             <div class="grope">
-                <div>
+                <div class="comm">
                     <p>"Отличный выбор для бизнеса! Эффективное решение бухгалтерских и юридических вопросов.
                     Профессиональный подход и оперативность команды. Спасибо за качественное обслуживание!"</p>
                     <span class="author">Михаил Галустян <img src="img/author.svg" alt="author" class="author-img"> </span>
                 </div>
-                <div>
+                <div class="comm">
                     <p>"Отличный сервис для бизнеса! Получили профессиональную помощь в вопросах бухгалтерии и юриспруденции. Работают оперативно и внимательно к деталям. Рекомендую!"</p>
                     <span class="author">Алиса Галустян <img src="img/author.svg" alt="author" class="author-img"></span>
                 </div>
-                <div>
+                <div class="comm">
                     <p>"Профессиональная помощь в самый нужный момент! Благодаря услугам этого сайта, наши бухгалтерские и юридические вопросы решены быстро и эффективно. Очень довольны результатом!"</p>
                     <span class="author">Вячеслав Галустян <img src="img/author.svg" alt="author" class="author-img"></span>
                 </div>
-                <div>
+                <div class="comm">
                     <p>"Прекрасный сервис и профессиональный подход! Все бухгалтерские и юридические вопросы решены оперативно и без лишних проблем. Рекомендую всем, кто ищет надежного партнера для своего бизнеса."</p>
                     <span class="author">Геннадий Галустян <img src="img/author.svg" alt="author" class="author-img"></span>
                 </div>
-                <div>
+                <div class="comm">
                     <p>"Отличные специалисты! Бухгалтерские и юридические услуги были предоставлены быстро и качественно. Вежливый персонал и внимательное отношение к клиентам. Очень довольны результатом!"</p>
                     <span class="author">Анатолий Галустян <img src="img/author.svg" alt="author" class="author-img"></span>
                 </div>
-                <div>
+                <div class="comm">
                     <p>"Великолепная команда профессионалов! Решили все наши бухгалтерские и юридические вопросы быстро и эффективно. Очень довольны качеством услуг и вниманием к деталям. Теперь рекомендуем их всем нашим партнерам!"
                     </p>
                     <span class="author">Ленка Коровкина <img src="img/author.svg" alt="author" class="author-img"></span>
@@ -110,31 +178,20 @@
     </section>
 </main>
 <footer class="footer">
-    <div class="footer__nav-left">
-        <nav class="footer__nav">
-            <ul>
-                <li>+7 (996) 455-00-28</li>
-                <li><a>profcenter22@mail.ru</a></li>
-                <li><a>profsenter@yandex.ru</a></li>
-                <li>© ProfCenter, 2024</li>
-                <li></li>
-            </ul>
-        </nav>
-        <nav class="footer__nav">
-            <ul>
-                <li><a>О нас</a></li>
-                <li><a>Услуги</a></li>
-                <li><a>Оформить заказ</a></li>
-                <li><a>Отзывы</a></li>
-                <li><a>Авторизация</a></li>
-            </ul>
-        </nav>
-    </div>
-    <nav class="footer__nav-icon">
+    <nav class="footer__nav">
         <ul>
-            <li><a href="https://www.youtube.com/watch?v=5awNQxP0OzA&ab_channel=%D0%BD%D0%B5%D0%B1%D1%83%D0%B4%D0%B8"><img src="img/tg.svg" alt="tg"></a></li>
-            <li><a href="https://www.youtube.com/watch?v=5awNQxP0OzA&ab_channel=%D0%BD%D0%B5%D0%B1%D1%83%D0%B4%D0%B8"><img src="img/vk.svg" alt="vk"></a></li>
-            <li><a href="https://www.youtube.com/watch?v=5awNQxP0OzA&ab_channel=%D0%BD%D0%B5%D0%B1%D1%83%D0%B4%D0%B8"><img src="img/ok.svg" alt="ok"></a></li>
+            <li>+7 (996) 455-00-28</li>
+            <li><a>profcenter22@mail.ru</a></li>
+            <li><a>profsenter@yandex.ru</a></li>
+            <li>© ProfCenter, 2024</li>
+            <li></li>
+        </ul>
+        <ul>
+            <li><a>О нас</a></li>
+            <li><a>Услуги</a></li>
+            <li><a>Оформить заказ</a></li>
+            <li><a>Отзывы</a></li>
+            <li><a>Авторизация</a></li>
         </ul>
     </nav>
 </footer>
