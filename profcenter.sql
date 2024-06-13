@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 12 2024 г., 23:12
+-- Время создания: Июн 13 2024 г., 19:59
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.0.22
 
@@ -23,18 +23,37 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `profcenter` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `profcenter`;
 
+DELIMITER $$
+--
+-- Процедуры
+--
+DROP PROCEDURE IF EXISTS `InsertOrder`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `InsertOrder` (IN `p_email` VARCHAR(255), IN `p_ID_service` INT, IN `p_ID_user` INT, IN `p_ID_order_status` INT)   BEGIN
+    INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_status`) 
+    VALUES (NULL, p_email, p_ID_service, p_ID_user, p_ID_order_status);
+END$$
+
+DROP PROCEDURE IF EXISTS `InsertUser`$$
+CREATE DEFINER=`root`@`%` PROCEDURE `InsertUser` (IN `p_fname` VARCHAR(255), IN `p_lname` VARCHAR(255), IN `p_login` VARCHAR(255), IN `p_password` VARCHAR(255), IN `p_ID_user_status` INT)   BEGIN
+    INSERT INTO `user` (`ID_user`, `fname`, `lname`, `login`, `password`, `ID_user_status`) 
+    VALUES (NULL, p_fname, p_lname, p_login, p_password, p_ID_user_status);
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `order`
 --
 
+DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
   `ID_order` int NOT NULL,
   `email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ID_service` int NOT NULL,
   `ID_user` int NOT NULL,
-  `ID_order_status` int NOT NULL
+  `ID_order_status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -45,7 +64,9 @@ INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_sta
 (1, 'voxis@gmail.com', 11, 2, 1),
 (2, 'college@gmail.com', 15, 4, 1),
 (3, 'kalina333@gmail.com', 10, 1, 2),
-(4, 'moyboy@gmail.com', 7, 2, 3);
+(4, 'moyboy@gmail.com', 7, 2, 3),
+(5, 'kiril@gmail.com', 17, 4, 1),
+(6, 'googledox', 15, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -53,6 +74,7 @@ INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_sta
 -- Структура таблицы `order_status`
 --
 
+DROP TABLE IF EXISTS `order_status`;
 CREATE TABLE `order_status` (
   `ID_order_status` int NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL
@@ -73,6 +95,7 @@ INSERT INTO `order_status` (`ID_order_status`, `name`) VALUES
 -- Структура таблицы `service`
 --
 
+DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `ID_service` int NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -109,6 +132,7 @@ INSERT INTO `service` (`ID_service`, `name`, `price`, `ID_service_type`) VALUES
 -- Структура таблицы `service_type`
 --
 
+DROP TABLE IF EXISTS `service_type`;
 CREATE TABLE `service_type` (
   `ID_service_type` int NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL
@@ -128,6 +152,7 @@ INSERT INTO `service_type` (`ID_service_type`, `name`) VALUES
 -- Структура таблицы `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `ID_user` int NOT NULL,
   `fname` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -145,7 +170,11 @@ INSERT INTO `user` (`ID_user`, `fname`, `lname`, `login`, `password`, `ID_user_s
 (1, 'Елена', 'Локтюк', 'elena', 'elena', 1),
 (2, 'Марина', 'Гнездо', 'marina', 'marina', 1),
 (3, 'Админ', 'Админ', 'god', 'god', 2),
-(4, 'Владимир', 'Кривозуб', 'vova', 'vova', 1);
+(4, 'Владимир', 'Кривозуб', 'vova', 'vova', 1),
+(5, 'Бобик', 'Бобикович', 'bob', 'bob', 1),
+(6, 'Григорий', 'Михаилян', 'grig', 'grig', 1),
+(8, 'Матвей', 'Матвеевов', 'matvey', 'matvey', 1),
+(9, 'Алена', 'Шишкова', 'alena', 'alena', 1);
 
 -- --------------------------------------------------------
 
@@ -153,6 +182,7 @@ INSERT INTO `user` (`ID_user`, `fname`, `lname`, `login`, `password`, `ID_user_s
 -- Структура таблицы `user_status`
 --
 
+DROP TABLE IF EXISTS `user_status`;
 CREATE TABLE `user_status` (
   `ID_status` int NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL
@@ -221,7 +251,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT для таблицы `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID_order` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_order` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `service`
@@ -239,7 +269,7 @@ ALTER TABLE `service_type`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
