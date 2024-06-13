@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style/index.css" type="text/css">
     <link rel="stylesheet" href="style/header-footer.css" type="text/css">
+    <script src="js/index.js" defer></script>
     <title>Заказ</title>
 </head>
 <body>
 <header class="header">
+
+    <div class="hamburger">
+        <div class="hamburger_lines" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+
+    <nav class="popup" id="popup">
+        <ul class="header_nav-popup">
+            <li><a href="">О нас</a></li>
+            <li><a href="">Услуги</a></li>
+            <li><a href="">Оформить заказ</a></li>
+            <li><a href="">Отзывы</a></li>
+            <li><a href="">Авторизация</a></li>
+        </ul>
+    </nav>
+
     <img src="img/logo.png" alt="logo">
     <nav class="header__nav">
         <ul>
@@ -22,13 +42,13 @@
 </header>
 <main class="main">
     <h1>Оформить заказ</h1>
-    <section class="section">
+    <section class="section p-10">
         <div class="section__left">
             <form>
                 <label for="email"></label>
                 <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
                 <label for="phone"></label>
-                <input type="phone" id="phone" name="phone" placeholder="Введите вашу почту" required>
+                <input type="tel" id="phone" name="phone" placeholder="Введите вашу почту" required>
                 <label for="services"></label>
                 <select id="services" name="services">
                     <option value="1">Регистрация (ООО, ИП)</option>

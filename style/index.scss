@@ -29,21 +29,25 @@
       flex-direction: column;
       gap: 40px;
     }
+
     li {
       display: flex;
       flex-direction: row;
       font-size: 16pt;
       gap: 10px;
+
       img {
         width: 30px;
       }
 
     }
+
     table {
       th, td {
         padding: 5px;
       }
     }
+
     form {
       @include header-footer.flex-base;
       gap: 25px;
@@ -84,6 +88,7 @@
         border-radius: 5px;
         cursor: pointer;
       }
+
       button:hover {
         background-color: header-footer.$color_bgAdmin-hover;
         transition: 0.3s;
@@ -97,14 +102,17 @@
         width: calc(100% - 70px);
       }
     }
+
     .p-r {
       text-indent: 20px;
     }
+
     .grope {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 10px;
+
       div {
         background-color: header-footer.$color_bgFeedback;
         border: 2px solid header-footer.$color_brFeedback;
@@ -112,45 +120,53 @@
         padding: 30px;
         max-width: 350px;
       }
+
       .author {
         display: flex;
         justify-content: end;
         gap: 5px;
       }
+
       .author-img {
         width: 20px;
       }
     }
   }
 
-  &__right{
+  &__right {
     display: flex;
     justify-content: center;
     background-color: header-footer.$color_bgBlock-secondary;
     border: 10px solid header-footer.$color_brBlock;
     border-radius: 5px;
-    .cat-img{
+
+    .cat-img {
       width: 25rem;
       height: 25rem;
     }
+
     .client-img {
       width: 25rem;
       height: 33rem;
     }
+
     .man-img {
       width: 25rem;
       height: 30rem;
     }
   }
 }
+
 ::placeholder {
   color: header-footer.$color_txtAccordion;
 }
+
 .section--form {
   flex-direction: column;
   gap: 20px;
   width: 90%;
 }
+
 .orders {
   display: flex;
   gap: 70px;
@@ -192,16 +208,35 @@ ul, li, h1, h2, h3, p, a {
   .orders {
     flex-direction: column;
   }
-  .section__right{
+  .section__right {
     display: none;
   }
+
   .section {
     width: 85%;
-
   }
-  .comm{
+
+  .p-10 {
+    padding: 10px;
+  }
+
+  .comm {
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .section__left {
+    padding: 10px;
+  }
+
+  .section__left {
+    p {
+      text-align: center;
+    }
   }
 }
