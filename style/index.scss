@@ -39,7 +39,11 @@
       }
 
     }
-
+    table {
+      th, td {
+        padding: 5px;
+      }
+    }
     form {
       @include header-footer.flex-base;
       gap: 25px;
@@ -118,6 +122,7 @@
       }
     }
   }
+
   &__right{
     display: flex;
     justify-content: center;
@@ -133,8 +138,8 @@
       height: 33rem;
     }
     .man-img {
-      width: 20rem;
-      height: 25rem;
+      width: 25rem;
+      height: 30rem;
     }
   }
 }
@@ -181,8 +186,22 @@ ul, li, h1, h2, h3, p, a {
   text-decoration: none;
 }
 
+
 @media (max-width: 412px) {
+
   .orders {
     flex-direction: column;
+  }
+  .section__right{
+    display: none;
+  }
+  .section {
+    width: 85%;
+
+  }
+  .comm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

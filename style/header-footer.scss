@@ -133,26 +133,13 @@ body {
 
   &__nav {
     @include ul-base;
-
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
     ul {
       flex-direction: column;
       gap: 5px;
     }
-  }
-
-  &__nav-icon {
-    @include ul-base;
-
-    ul {
-      gap: 10px;
-    }
-  }
-
-  &__nav-left {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    padding: 0 0 0 40px;
   }
 }
 
@@ -160,7 +147,6 @@ body {
   .header {
     padding: 30px;
   }
-
   .header__nav {
     display: none;
   }
@@ -214,7 +200,14 @@ body {
     transform: translateY(-10px) rotate(-45deg);
   }
 
-  .footer, .footer__nav-left {
+  .footer {
+    display: flex;
     flex-direction: column;
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 10px;
+    }
   }
 }
