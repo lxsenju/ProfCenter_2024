@@ -9,37 +9,9 @@
     <title>ProfCenter</title>
 </head>
 <body>
-<header class="header">
-
-    <div class="hamburger">
-        <div class="hamburger_lines" id="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </div>
-
-    <nav class="popup" id="popup">
-        <ul class="header_nav-popup">
-            <li><a href="">О нас</a></li>
-            <li><a href="">Услуги</a></li>
-            <li><a href="">Оформить заказ</a></li>
-            <li><a href="">Отзывы</a></li>
-            <li><a href="">Авторизация</a></li>
-        </ul>
-    </nav>
-
-    <img src="img/logo.png" alt="logo">
-    <nav class="header__nav">
-        <ul>
-            <li><a href="">О нас</a></li>
-            <li><a href="">Услуги</a></li>
-            <li><a href="">Оформить заказ</a></li>
-            <li><a href="">Отзывы</a></li>
-            <li><a href="">Авторизация</a></li>
-        </ul>
-    </nav>
-</header>
+<?php
+require_once "header.php"
+?>
 <main class="main">
     <section class="section">
         <div class="section__left">
@@ -178,23 +150,8 @@
         </div>
     </section>
 </main>
-<footer class="footer">
-    <nav class="footer__nav">
-        <ul>
-            <li>+7 (996) 455-00-28</li>
-            <li><a>profcenter22@mail.ru</a></li>
-            <li><a>profsenter@yandex.ru</a></li>
-            <li>© ProfCenter, 2024</li>
-            <li></li>
-        </ul>
-        <ul>
-            <li><a>О нас</a></li>
-            <li><a>Услуги</a></li>
-            <li><a>Оформить заказ</a></li>
-            <li><a>Отзывы</a></li>
-            <li><a>Авторизация</a></li>
-        </ul>
-    </nav>
-</footer>
+<?php
+require_once "footer.html";
+?>
 </body>
 </html>
