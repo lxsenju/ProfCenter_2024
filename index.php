@@ -101,7 +101,7 @@ require_once "header.php"
             <p class="p-r">Не упустите возможность получить квалифицированную помощь — нажмите "Оформить заказ" и
                 начните
                 сотрудничество с нами уже сегодня!</p>
-            <form>
+            <form action="order.php" method="get">
                 <label for="services"></label>
                 <?php
                 $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";

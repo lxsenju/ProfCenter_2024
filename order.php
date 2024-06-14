@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "php/db.php"
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -25,15 +26,19 @@ require_once "header.php"
                 <label for="phone"></label>
                 <input type="tel" id="phone" name="phone" placeholder="Введите вашу почту" required>
                 <label for="services"></label>
-                <select id="services" name="services">
-                    <option value="1">Регистрация (ООО, ИП)</option>
-                    <option value="2">Изменение устава</option>
-                    <option value="3">Разрешение споров(трудовые, экономические)</option>
-                    <option value="4">Лицензии</option>
-                    <option value="5">Ликвидация</option>
-                    <option value="6">Консалтинг</option>
-                    <option value="7">Смена юридического адреса</option>
-                    <option value="8">Изменение видов деятельности</option>
+                    <?php
+                    $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";
+                    $result = mysqli_query($connection, $query);
+                    ?>
+                    <select id="services" name="services">
+                        <?php
+                        while ($service = mysqli_fetch_array($result)) {
+                            echo
+                                "
+                            <option value='" . $service['ID'] . "'>" . $service['SERVICE'] . "</option>
+                        ";
+                        }
+                        ?>
                 </select>
                 <button type="submit">Оформить заказ</button>
             </form>
