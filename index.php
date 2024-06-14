@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "php/db.php";
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -31,62 +32,60 @@ require_once "header.php"
             <img src="img/cat.png" alt="cat" class="cat-img">
         </div>
     </section>
-    <section class="section">
+    <section class="section" id="service">
         <div class="section__left">
-            <h1 id="service">Бухгалтерские услуги</h1>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Наименование</th>
-                    <th>Цена</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                </tbody>
-            </table>
+            <?php /*
+            $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";
+            $result = mysqli_query($connection, $query);
+            $current_category = "";
 
-            <h1>Юридические услуги</h1>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Наименование</th>
-                    <th>Цена</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Контроль ведения учета</td>
-                    <td>5000</td>
-                </tr>
-                </tbody>
+            if ($result->num_rows > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    if ($row["SERVICETYPE"] != $current_category) {
+                        echo "<h1>" . $row["SERVICETYPE"] . "</h1>";
+                        $current_category = $row["SERVICETYPE"];
+                    }
+                    echo
+                        "
+                            <p>" . $row["SERVICE"] . " - " . $row["SERVICEPRICE"] . "₽</p>
+                            
+                            <table class='table'>
+                                <tbody>
+                                    <tr>
+                                        <td>" . $row["SERVICE"] . "</td>
+                                        <td>" . $row["SERVICEPRICE"] . "₽</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        ";
+                }
+            } else {
+                echo "0 results";
+            }
+
+            $connection->close();*/
+            ?>
+
+            <?php
+            $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";
+            $result = mysqli_query($connection, $query);
+
+            $currentCategory = "";
+            ?>
+
+            <table>
+                <?php while ($service = mysqli_fetch_assoc($result)): ?>
+                    <?php if ($currentCategory != $service['SERVICETYPE']): ?>
+                        <?php $currentCategory = $service['SERVICETYPE']; ?>
+                        <tr>
+                            <th colspan="2"><h1><?= $currentCategory ?></h1></th>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td><?= $service['SERVICE'] ?></td>
+                        <td><?= $service['SERVICEPRICE'] ?> руб.</td>
+                    </tr>
+                <?php endwhile; ?>
             </table>
         </div>
         <div class="section__right">
@@ -104,15 +103,19 @@ require_once "header.php"
                 сотрудничество с нами уже сегодня!</p>
             <form>
                 <label for="services"></label>
+                <?php
+                $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";
+                $result = mysqli_query($connection, $query);
+                ?>
                 <select id="services" name="services">
-                    <option value="1">Регистрация (ООО, ИП)</option>
-                    <option value="2">Изменение устава</option>
-                    <option value="3">Разрешение споров(трудовые, экономические)</option>
-                    <option value="4">Лицензии</option>
-                    <option value="5">Ликвидация</option>
-                    <option value="6">Консалтинг</option>
-                    <option value="7">Смена юридического адреса</option>
-                    <option value="8">Изменение видов деятельности</option>
+                    <?php
+                    while ($service = mysqli_fetch_array($result)) {
+                        echo
+                            "
+                            <option value='" . $service['ID'] . "'>" . $service['SERVICE'] . "</option>
+                        ";
+                    }
+                    ?>
                 </select>
                 <button type="submit">Оформить заказ</button>
             </form>
