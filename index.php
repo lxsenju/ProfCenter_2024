@@ -88,9 +88,7 @@ require_once "header.php"
                 <?php endwhile; ?>
             </table>
         </div>
-        <div class="section__right">
-            <img src="img/man.png" alt="man" class="man-img">
-        </div>
+
     </section>
     <section class="section">
         <div class="section__left">

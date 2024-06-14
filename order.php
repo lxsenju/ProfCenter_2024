@@ -20,11 +20,9 @@ require_once "header.php"
     <h1>Оформить заказ</h1>
     <section class="section p-10">
         <div class="section__left">
-            <form>
+            <form method="post" action="php/ordering-logic.php">
                 <label for="email"></label>
                 <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
-                <label for="phone"></label>
-                <input type="tel" id="phone" name="phone" placeholder="Введите вашу почту" required>
                 <label for="services"></label>
                     <?php
                     $query = "SELECT service.ID_service AS ID, service.name AS SERVICE, service.price AS SERVICEPRICE, service_type.name AS SERVICETYPE FROM `service` JOIN `service_type` ON service_type.ID_service_type = service.ID_service_type;";
