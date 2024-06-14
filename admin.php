@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "./php/db.php"
 ?>
 
 <!DOCTYPE html>
@@ -19,81 +20,39 @@ require_once "header.php"
 <main class="main">
     <h1>Заказы</h1>
     <section class="section section--form">
-        <div class="orders">
-            <div class="orders__col"><p>Михаил Галустян</p></div>
-            <div class="orders__col">
-                <div>
-                    <p>Тип услуги:</p>
-                    <p>Юридический</p>
-                </div>
-                <div>
-                    <p>Услуга:</p>
-                    <p>Изменение устава</p>
-                </div>
-                <div>
-                    <p>Цена:</p>
-                    <p>1000 рублей</p>
-                </div>
-            </div>
-            <div class="orders__col">
-                <form>
-                    <button type="submit">Одобрить</button>
-                </form>
-                <form>
-                    <button type="submit">Отклонить</button>
-                </form>
-            </div>
-        </div>
-        <div class="orders">
-            <div class="orders__col"><p>Михаил Галустян</p></div>
-            <div class="orders__col">
-                <div>
-                    <p>Тип услуги:</p>
-                    <p>Юридический</p>
-                </div>
-                <div>
-                    <p>Услуга:</p>
-                    <p>Изменение устава</p>
-                </div>
-                <div>
-                    <p>Цена:</p>
-                    <p>1000 рублей</p>
-                </div>
-            </div>
-            <div class="orders__col">
-                <form>
-                    <button type="submit">Одобрить</button>
-                </form>
-                <form>
-                    <button type="submit">Отклонить</button>
-                </form>
-            </div>
-        </div>
-        <div class="orders">
-            <div class="orders__col"><p>Михаил Галустян</p></div>
-            <div class="orders__col">
-                <div>
-                    <p>Тип услуги:</p>
-                    <p>Юридический</p>
-                </div>
-                <div>
-                    <p>Услуга:</p>
-                    <p>Изменение устава</p>
-                </div>
-                <div>
-                    <p>Цена:</p>
-                    <p>1000 рублей</p>
-                </div>
-            </div>
-            <div class="orders__col">
-                <form>
-                    <button type="submit">Одобрить</button>
-                </form>
-                <form>
-                    <button type="submit">Отклонить</button>
-                </form>
-            </div>
-        </div>
+    <?php
+    $sql = "SELECT CONCAT(user.fname, ' ', user.lname) AS name, service_type.name AS service_type_name, service.name AS service_name, ordering.email
+        FROM ordering
+        JOIN user ON ordering.ID_user = user.ID_user 
+        JOIN service ON ordering.ID_service = service.ID_service 
+        JOIN service_type ON service.ID_service_type = service_type.ID_service_type
+        ORDER BY ordering.ID_ordering_status;";
+    $result = $connection->query($sql);
+    while ($n = mysqli_fetch_array($result)) {
+        echo '<div class="orders">';
+            echo '<div class="orders__col"><p>'. $n['name'] .'</p></div>';
+            echo '<div class="orders__col">';
+                echo '<div>';
+                    echo '<p>Тип услуги:</p>';
+                    echo '<p>'. $n['service_type_name'] .'</p>';
+                echo '</div>';
+                echo '<div>';
+                    echo '<p>Услуга:</p>';
+                    echo '<p>'. $n['service_name'] .'</p>';
+                echo '</div>';
+                echo '<div>';
+                    echo '<p>Почта:</p>';
+                    echo '<p>'. $n['email'] .'</p>';
+                echo '</div>';
+            echo '</div>';
+            echo '<div class="orders__col">';
+                echo '<form><button type="submit">Одобрить</button></form>';
+                echo '<form><button type="submit">Отклонить</button></form>';
+            echo '</div>';
+        echo '</div>';
+    };
+    $conn->close();
+    ?>
     </section>
 </main>
 <?php
