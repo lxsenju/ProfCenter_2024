@@ -51,7 +51,7 @@ require_once "header.php"
             echo '</div>';
         echo '</div>';
     };
-    $conn->close();
+    $connection->close();
     ?>
     </section>
 </main>
