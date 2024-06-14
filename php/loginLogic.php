@@ -18,7 +18,9 @@ if ($user) {
     $_SESSION["login"] = $userLogin;
     $_SESSION["userStatus"] = $userStatus;
 
-    if ($userStatus = "2") {
+    echo $userLogin . " " . $userStatus;
+
+    if ($userStatus == "2") {
         header("location: ../admin.php");
     } else {
         header("location: ../index.php");
