@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 13 2024 г., 19:59
+-- Время создания: Июн 14 2024 г., 08:56
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.0.22
 
@@ -44,23 +44,23 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `order`
+-- Структура таблицы `ordering`
 --
 
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
-  `ID_order` int NOT NULL,
+DROP TABLE IF EXISTS `ordering`;
+CREATE TABLE `ordering` (
+  `ID_ordering` int NOT NULL,
   `email` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ID_service` int NOT NULL,
   `ID_user` int NOT NULL,
-  `ID_order_status` int NOT NULL DEFAULT '1'
+  `ID_ordering_status` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `order`
+-- Дамп данных таблицы `ordering`
 --
 
-INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_status`) VALUES
+INSERT INTO `ordering` (`ID_ordering`, `email`, `ID_service`, `ID_user`, `ID_ordering_status`) VALUES
 (1, 'voxis@gmail.com', 11, 2, 1),
 (2, 'college@gmail.com', 15, 4, 1),
 (3, 'kalina333@gmail.com', 10, 1, 2),
@@ -71,20 +71,20 @@ INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_sta
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `order_status`
+-- Структура таблицы `ordering_status`
 --
 
-DROP TABLE IF EXISTS `order_status`;
-CREATE TABLE `order_status` (
-  `ID_order_status` int NOT NULL,
+DROP TABLE IF EXISTS `ordering_status`;
+CREATE TABLE `ordering_status` (
+  `ID_ordering_status` int NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `order_status`
+-- Дамп данных таблицы `ordering_status`
 --
 
-INSERT INTO `order_status` (`ID_order_status`, `name`) VALUES
+INSERT INTO `ordering_status` (`ID_ordering_status`, `name`) VALUES
 (1, 'На рассмотрении'),
 (2, 'Одобрен'),
 (3, 'Отклонен');
@@ -201,19 +201,19 @@ INSERT INTO `user_status` (`ID_status`, `name`) VALUES
 --
 
 --
--- Индексы таблицы `order`
+-- Индексы таблицы `ordering`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`ID_order`),
+ALTER TABLE `ordering`
+  ADD PRIMARY KEY (`ID_ordering`),
   ADD KEY `ID_service` (`ID_service`),
   ADD KEY `ID_user` (`ID_user`),
-  ADD KEY `ID-order_status` (`ID_order_status`);
+  ADD KEY `ID-order_status` (`ID_ordering_status`);
 
 --
--- Индексы таблицы `order_status`
+-- Индексы таблицы `ordering_status`
 --
-ALTER TABLE `order_status`
-  ADD PRIMARY KEY (`ID_order_status`);
+ALTER TABLE `ordering_status`
+  ADD PRIMARY KEY (`ID_ordering_status`);
 
 --
 -- Индексы таблицы `service`
@@ -248,10 +248,10 @@ ALTER TABLE `user_status`
 --
 
 --
--- AUTO_INCREMENT для таблицы `order`
+-- AUTO_INCREMENT для таблицы `ordering`
 --
-ALTER TABLE `order`
-  MODIFY `ID_order` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `ordering`
+  MODIFY `ID_ordering` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `service`
@@ -276,12 +276,12 @@ ALTER TABLE `user`
 --
 
 --
--- Ограничения внешнего ключа таблицы `order`
+-- Ограничения внешнего ключа таблицы `ordering`
 --
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`ID_order_status`) REFERENCES `order_status` (`ID_order_status`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`ID_service`) REFERENCES `service` (`ID_service`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_3` FOREIGN KEY (`ID_user`) REFERENCES `user` (`ID_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `ordering`
+  ADD CONSTRAINT `ordering_ibfk_1` FOREIGN KEY (`ID_ordering_status`) REFERENCES `ordering_status` (`ID_ordering_status`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ordering_ibfk_2` FOREIGN KEY (`ID_service`) REFERENCES `service` (`ID_service`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ordering_ibfk_3` FOREIGN KEY (`ID_user`) REFERENCES `user` (`ID_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `service`
