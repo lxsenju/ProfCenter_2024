@@ -16,9 +16,9 @@
             <?php
             if (isset($_SESSION["auth"])) {
                 if ($_SESSION["userStatus"] = "2") {
-                    echo "<li class='red'>" . $_SESSION["login"] . "</li>";
-                } else {
                     echo "<li class='white'>" . $_SESSION["login"] . "</li>";
+                } else {
+                    echo "<li class='red'>" . $_SESSION["login"] . "</li>";
                 }
                 echo "<li><a href='php/logoutLogic.php'>Выход</a></li>";
             } else {
@@ -42,11 +42,7 @@
             <li><a href="index.php#comment">Отзывы</a></li>
             <?php
             if (isset($_SESSION["auth"])) {
-                if ($_SESSION["userStatus"] = "2") {
-                    echo "<li class='red'>" . $_SESSION["login"] . "</li>";
-                } else {
-                    echo "<li class='white'>" . $_SESSION["login"] . "</li>";
-                }
+                echo "<li>" . $_SESSION["login"] . "</li>";
                 echo "<li><a href='php/logoutLogic.php'>Выход</a></li>";
             } else {
                 echo "<li><a href='login.php'>Вход</a></li>";

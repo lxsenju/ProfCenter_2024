@@ -83,14 +83,6 @@ body {
   @include HeadFoot-base-full;
   min-height: 70px;
 
-  .red {
-    color: #FF0000;
-  }
-
-  .white {
-    color: #ffffff;
-  }
-
   a {
     color: $color_txtHeaFoot;
     text-decoration: none;

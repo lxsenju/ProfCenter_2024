@@ -29,12 +29,6 @@ body {
   flex: 0 0 auto;
   min-height: 70px;
 }
-.header .red {
-  color: #FF0000;
-}
-.header .white {
-  color: #ffffff;
-}
 .header a {
   color: #FEBE71;
   text-decoration: none;
