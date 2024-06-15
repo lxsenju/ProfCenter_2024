@@ -13,11 +13,11 @@ $user = mysqli_fetch_assoc($res);
 if ($user) {
     $userLogin = $user["login"];
     $userStatus = $user["ID_user_status"];
-    $ID_user = $user["ID_user"];
+    $id_user = $user["ID_user"];
 
     $_SESSION["auth"] = true;
     $_SESSION["login"] = $userLogin;
-    $_SESSION["ID_user"] = $ID_user;
+    $_SESSION["id_user"] = $id_user;
     $_SESSION["userStatus"] = $userStatus;
 
     echo $userLogin . " " . $userStatus;
