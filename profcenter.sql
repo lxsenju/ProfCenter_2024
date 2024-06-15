@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 14 2024 г., 08:56
+-- Время создания: Июн 15 2024 г., 08:51
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.0.22
 
@@ -29,7 +29,7 @@ DELIMITER $$
 --
 DROP PROCEDURE IF EXISTS `InsertOrder`$$
 CREATE DEFINER=`root`@`%` PROCEDURE `InsertOrder` (IN `p_email` VARCHAR(255), IN `p_ID_service` INT, IN `p_ID_user` INT, IN `p_ID_order_status` INT)   BEGIN
-    INSERT INTO `order` (`ID_order`, `email`, `ID_service`, `ID_user`, `ID_order_status`) 
+    INSERT INTO `ordering` (`ID_ordering`, `email`, `ID_service`, `ID_user`, `ID_ordering_status`) 
     VALUES (NULL, p_email, p_ID_service, p_ID_user, p_ID_order_status);
 END$$
 
@@ -61,12 +61,11 @@ CREATE TABLE `ordering` (
 --
 
 INSERT INTO `ordering` (`ID_ordering`, `email`, `ID_service`, `ID_user`, `ID_ordering_status`) VALUES
-(1, 'voxis@gmail.com', 11, 2, 1),
-(2, 'college@gmail.com', 15, 4, 1),
 (3, 'kalina333@gmail.com', 10, 1, 2),
 (4, 'moyboy@gmail.com', 7, 2, 3),
-(5, 'kiril@gmail.com', 17, 4, 1),
-(6, 'googledox', 15, 2, 1);
+(5, 'kiril@gmail.com', 17, 4, 2),
+(7, 'irinkapor@gmail.com', 7, 11, 1),
+(8, 'irinkapor@gmail.com', 10, 11, 3);
 
 -- --------------------------------------------------------
 
@@ -174,7 +173,9 @@ INSERT INTO `user` (`ID_user`, `fname`, `lname`, `login`, `password`, `ID_user_s
 (5, 'Бобик', 'Бобикович', 'bob', 'bob', 1),
 (6, 'Григорий', 'Михаилян', 'grig', 'grig', 1),
 (8, 'Матвей', 'Матвеевов', 'matvey', 'matvey', 1),
-(9, 'Алена', 'Шишкова', 'alena', 'alena', 1);
+(9, 'Алена', 'Шишкова', 'alena', 'alena', 1),
+(10, 'саша', 'саша', 'sasha', 'sasha', 1),
+(11, 'Порошенко', 'Ирина', 'irina', 'irina', 1);
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT для таблицы `ordering`
 --
 ALTER TABLE `ordering`
-  MODIFY `ID_ordering` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_ordering` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `service`
@@ -269,7 +270,7 @@ ALTER TABLE `service_type`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
