@@ -1,3 +1,23 @@
 .none{
     display: none;
 }
+.a-footer {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.a-footer:link {
+    color: inherit !important; /* или укажите нужный цвет */
+}
+
+.a-footer:visited {
+    color: inherit !important; /* или укажите нужный цвет */
+}
+
+.a-footer:hover {
+    color: inherit !important; /* или укажите нужный цвет */
+}
+
+.a-footer:active {
+    color: inherit !important; /* или укажите нужный цвет */
+}
